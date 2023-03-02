@@ -1,0 +1,29 @@
+<nav>
+  <a href="/">Home</a>
+  <a href="/dashboard">Dashboard</a>
+  <a href="/api/users/logout">Logout</a>
+</nav>
+
+<div id="tech-blog-title">The Tech Blog</div>
+
+{{#each blogs}}
+  <div class="blog-selection" data-user-id="{{UserId}}">
+    <h2>{{title}}</h2>
+    <div class="hide" id="blog-select-content">{{content}}</div>
+    <div class="hide" id="blog-select-user">By: {{User.username}}</div>
+    <h4>Created {{createdAt}}</h4>
+
+    <div class="hide" id="comment-form" data-blog-id="{{BlogId}}">
+      <form>
+        <div>
+          <input class="comment-input" type="text" id="comment-text" />
+        </div>
+        <div>
+          <button class="btn btn-comment" type="submit">Comment</button>
+        </div>
+      </form>
+    </div>
+  </div>
+{{/each}}
+
+<script src="/js/home.js"></script>

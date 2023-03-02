@@ -1,13 +1,10 @@
 const express = require("express");
 const router = express.Router();
-// Import model(s)
-const { User, Blog } = require("../models");
-const bcrypt = require("bcrypt");
-const { Op } = require("sequelize");
+const { Comment } = require("../models");
 
 //READ all blog records
 router.get("/", (req, res) => {
-  Blog.findAll()
+  Comment.findAll()
     .then((data) => {
       res.json(data);
     })
@@ -21,7 +18,7 @@ router.get("/", (req, res) => {
 
 //READ one blog record by id
 router.get("/:id", (req, res) => {
-  Blog.findByPk(req.params.id)
+  Comment.findByPk(req.params.id)
     .then((data) => {
       if (data) {
         return res.json(data);
@@ -41,11 +38,10 @@ router.get("/:id", (req, res) => {
 
 //CREATE a new blog record
 router.post("/", (req, res) => {
-  // console.log("Bongus");
-  Blog.create({
-    title: req.body.title,
+  Comment.create({
     content: req.body.content,
-    UserId: req.session.user_id,
+    userId: req.session.userId,
+    blogId: req.body.blogId,
   })
     .then((blogData) => {
       res.json(blogData);
@@ -60,9 +56,8 @@ router.post("/", (req, res) => {
 
 //UPDATE a blog record
 router.put("/:id", (req, res) => {
-  Blog.update(
+  Comment.update(
     {
-      title: req.body.title,
       content: req.body.content,
     },
     {
@@ -90,7 +85,7 @@ router.put("/:id", (req, res) => {
 
 //DELETE a blog record
 router.delete("/:id", (req, res) => {
-  Blog.destroy({
+  Comment.destroy({
     where: {
       id: req.params.id,
     },

@@ -1,0 +1,32 @@
+<nav>
+  <a href="/">Home</a>
+  <a href="/api/users/logout">Logout</a>
+</nav>
+
+<div id="dashboard-title">Your Dashboard</div>
+
+<form class="form dashboard-form">
+  <div class="form-group">
+    <label for="title-text" class="label">Title:</label>
+    <input type="text" id="title-text" />
+  </div>
+  <div class="form-group">
+    <label for="content-text" class="label">Content:</label>
+    <input type="text" id="content-text" />
+  </div>
+  <div class="form-group">
+    <button class="btn btn-primary" type="submit">Post</button>
+  </div>
+</form>
+
+{{#each blogs}}
+  <div class="dashboard-blog-posts">
+
+    <h3>{{title}}</h3>
+    <p>{{content}}</p>
+    <h4>Created {{createdAt}}</h4>
+
+  </div>
+{{/each}}
+
+<script src="/js/dashboard.js"></script>
