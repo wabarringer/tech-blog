@@ -7,23 +7,42 @@
 <div id="tech-blog-title">The Tech Blog</div>
 
 {{#each blogs}}
-  <div class="blog-selection" data-user-id="{{UserId}}">
-    <h2>{{title}}</h2>
-    <div class="hide" id="blog-select-content">{{content}}</div>
-    <div class="hide" id="blog-select-user">By: {{User.username}}</div>
-    <h4>Created {{createdAt}}</h4>
+  <div id="post-and-comment-card">
 
-    <div class="hide" id="comment-form" data-blog-id="{{BlogId}}">
-      <form>
-        <div>
-          <input class="comment-input" type="text" id="comment-text" />
-        </div>
-        <div>
-          <button class="btn btn-comment" type="submit">Comment</button>
-        </div>
-      </form>
+    <div class="blog-selection" blogId="{{id}}">
+      <h2 blogId="{{id}}">{{title}}</h2>
+      <div id="blog-select-content" blogId="{{id}}">{{content}}</div>
+      <div id="blog-select-user" blogId="{{id}}">By:
+        {{User.username}}</div>
+      <h4 blogId="{{id}}">Created {{createdAt}}</h4>
     </div>
+
+    <div id="comment-card">
+      <div id="comment-form" blog-id="{{id}}">
+        <form>
+          <div>
+            <textarea id="comment-text"></textarea>
+          </div>
+          <div>
+            <button
+              data-blogId="{{id}}"
+              class="btn btn-comment"
+              type="submit"
+            >Comment</button>
+          </div>
+        </form>
+      </div>
+
+      <div id="all-comments">
+        <h4>This Post's Comments:</h4>
+        {{#each blogs.Comments}}
+          <div id="comment-content">T{{comment.content}}</div>
+        {{/each}}
+      </div>
+    </div>
+
   </div>
+
 {{/each}}
 
 <script src="/js/home.js"></script>

@@ -28,7 +28,7 @@ router.get("/home", async (req, res) => {
     if (req.session.logged_in) {
       console.log(req.session);
       const blogData = await Blog.findAll({
-        include: [User],
+        include: [User, Comment],
       });
 
       const blogs = blogData.map((blog) => blog.get({ plain: true }));

@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { Comment } = require("../models");
 
-//READ all blog records
+//READ all
 router.get("/", (req, res) => {
   Comment.findAll()
     .then((data) => {
@@ -16,7 +16,7 @@ router.get("/", (req, res) => {
     });
 });
 
-//READ one blog record by id
+//READ one
 router.get("/:id", (req, res) => {
   Comment.findByPk(req.params.id)
     .then((data) => {
@@ -36,12 +36,12 @@ router.get("/:id", (req, res) => {
     });
 });
 
-//CREATE a new blog record
-router.post("/", (req, res) => {
+//CREATE
+router.post("/:blogId", (req, res) => {
   Comment.create({
     content: req.body.content,
     userId: req.session.userId,
-    blogId: req.body.blogId,
+    blogId: req.params.blogId,
   })
     .then((blogData) => {
       res.json(blogData);
@@ -54,7 +54,7 @@ router.post("/", (req, res) => {
     });
 });
 
-//UPDATE a blog record
+//UPDATE
 router.put("/:id", (req, res) => {
   Comment.update(
     {
@@ -83,7 +83,7 @@ router.put("/:id", (req, res) => {
     });
 });
 
-//DELETE a blog record
+//DELETE
 router.delete("/:id", (req, res) => {
   Comment.destroy({
     where: {
