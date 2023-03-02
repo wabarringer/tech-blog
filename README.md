@@ -3,13 +3,13 @@
 ## Description
 
 - What was your motivation?
-  - To build an API using MongoDB
+  - To build a fullstack blog application
 - Why did you build this project?
-  - I wanted to see if I'd prefer MongoDB over SQL. I'm still undecided, and it probably will depned on my future projects.
+  - I wanted to get more experience with building backend and frontend logic
 - What problem does it solve?
-  - Uses MongoDB to create the backend of a Social Media web app
+  - The app allows users to create a user account and post blog posts
 - What did you learn?
-  - How to use MongoDB more effectively
+  - I increased my knowledge base on router building, databases, frontend controllers and rendering to handlebars, and just how much effort it takes to build a fully functional website.
 
 ## Installation
 
